@@ -12,7 +12,7 @@ from models.base_model import BaseModel
 class TestState(unittest.TestCase):
     """Test to see if State inherits from BaseModel"""
     def test_State_inheritance(self):
-        new_state = State
+        new_state = State()
         self.assertIsInstance(new_state, BaseModel)
 
     def test_State_attributes(self):
