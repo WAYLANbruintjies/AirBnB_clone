@@ -18,44 +18,55 @@ from models.review import Review
 
 class TestFileStorage(unittest.TestCase):
     def setUp(self):
-        self.a = Amenity()
-        self.b = BaseModel()
-        self.c = City()
-        self.p = Place()
-        self.r = Review()
-        self.s = State()
-        self.u = User()
-        self.storage = FileStorage()
-        self.storage.save()
-        if os.path.exits("file.json"):
+        try:
+            os.rename("file.json", "tmp.json")
+        except FileNotFoundError:
             pass
-        else:
-            os.mknod("file.json")
 
     def tearDown(self):
-        del self.a
-        del self.b
-        del self.c
-        del self.p
-        del self.r
-        del self.s
-        del self.u
-        del self.storage
-        if os.path.exits("file.json"):
+        try:
             os.remove("file.json")
+        except FileNotFoundError:
+            pass
+        try:
+            os.rename("tmp.json", "file.json")
+        except FileNotFoundError:
+            pass
+        FileStorage._FileStorage__objects = {}
 
     def test_all(self):
-        values = self.storage.all()
-        self.asserIsNotNone(values)
-        self.assertEqual(type(values), dict)
+        self.assertEqual(dict, type(models.storage.all()))
 
     def test_new(self):
-        values = self.storage.all()
-        self.u.name = "Ronaldo"
-        self.u.id = "007"
-        val2 = self.storage.new(self.u)
-        key = "{}.{}".format(self.u.__class__.__name__, self.u.id)
-        self.assertIsNotNone(value[key])
+        my_base_model = BaseModel()
+        my_user = User()
+        my_state = State()
+        my_place = Place()
+        my_city = City()
+        my_amenity = Amenity()
+        my_review = Review()
+        models.storage.new(my_base_model)
+        models.storage.new(my_user)
+        models.storage.new(my_state)
+        models.storage.new(my_place)
+        models.storage.new(my_city)
+        models.storage.new(my_amenity)
+        models.storage.new(my_review)
+        self.assertIn("BaseModel." + my_base_model.id, models.storage.all().keys())
+        self.assertIn(my_base_model, models.storage.all().values())
+        self.assertIn("User." + my_user.id, models.storage.all().keys())
+        self.assertIn(my_user, models.storage.all().values())
+        self.assertIn("State." + my_state.id, models.storage.all().keys())
+        self.assertIn(my_state, models.storage.all().values())
+        self.assertIn("Place." + my_place.id, models.storage.all().keys())
+        self.assertIn(my_place, models.storage.all().values())
+        self.assertIn("City." + my_city.id, models.storage.all().keys())
+        self.assertIn(my_city, models.storage.all().values())
+        self.assertIn("Amenity." + my_amenity.id, models.storage.all().keys())
+        self.assertIn(my_amenity, models.storage.all().values())
+        self.assertIn("Review." + my_review.id, models.storage.all().keys())
+        self.assertIn(my_review, models.storage.all().values())
+
 
 if __name__ == "__main__":
     unittest.main()
