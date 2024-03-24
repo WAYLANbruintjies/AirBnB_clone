@@ -21,7 +21,7 @@ class TestPlace(unittest.TestCase):
     def test_Place_inheritance(self):
         """Test to see if Place inherits from BaseModel"""
         new_place = Place()
-        self.assrtIsInstance(new_place, BaseModel)
+        self.assertIsInstance(new_place, BaseModel)
 
     def test_Place_attributes(self):
         """
