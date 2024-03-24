@@ -11,9 +11,9 @@ from models.place import Place
 
 class TestPlace(unittest.TestCase):
     """Testing Place class"""
-     def setUp(self):
-         """Create new instance for Place"""
-         self.new_place = Place()
+    def setUp(self):
+        """Create new instance for Place"""
+        self.new_place = Place()
 
     def TearDown(self):
         pass

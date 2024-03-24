@@ -31,8 +31,8 @@ class TestUser(unittest.TestCase):
         Tests the type of email
         """
         new_user = User()
-        E-mail = getattr(new_user, "email")
-        self.assertIsInstance(E-mail, str)
+        mail = getattr(new_user, "email")
+        self.assertIsInstance(mail, str)
 
     def test_first_name(self):
         """

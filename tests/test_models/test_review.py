@@ -9,7 +9,7 @@ from models.base_model import BaseModel
 from models.review import Review
 
 
-class TestReview(unittets.TestCase):
+class TestReview(unittest.TestCase):
     """Test to see if Review Inherits from BaseModel"""
     def test_Review_inheritance(self):
         new_review = Review()
