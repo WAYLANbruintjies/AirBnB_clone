@@ -1,0 +1,27 @@
+.price_by_night {
+	font-color: #FF5A5F;
+	border: 4px #FF5A5F;
+	border-radius: 90px;
+	min-width: 60px;
+	height: 60px;
+	font-size: 30px;
+	text-align: right;
+}
+
+.information {
+	height: 80px;
+	border-top: 1px #DDDDDD;
+	border-bottom: 1px #DDDDDD;
+}
+
+.max_guest, .number_rooms, .number_bathrooms {
+	width: 100px;
+}
+
+div .user {
+	font-weight: bold;
+}
+
+p {
+	font-weight normal;
+}
